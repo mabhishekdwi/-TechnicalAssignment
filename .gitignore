@@ -9,6 +9,7 @@ allure-results/
 allure-report/
 playwright-report/
 *.log
+.claude
 
 # Environment files
 .env
