@@ -1,3 +1,9 @@
+/**
+ * Login Module — SauceDemo
+ * Tests valid login, wrong credentials, locked-out user, and empty field validation.
+ *
+ * @author abhishek.dwivedi
+ */
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
 import { LoginPage } from '../../pages/saucedemo/LoginPage.js';

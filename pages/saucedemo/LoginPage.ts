@@ -12,6 +12,8 @@ import BasePage from '../BasePage.js';
  *   performance_glitch_user / secret_sauce
  *   error_user         / secret_sauce
  *   visual_user        / secret_sauce
+ *
+ * @author abhishek.dwivedi
  */
 export class LoginPage extends BasePage {
   private readonly usernameInput: Locator;

@@ -1,3 +1,9 @@
+/**
+ * Booking Management — POST (create) & PUT/PATCH (update) — Restful-Booker
+ * Tests booking creation with valid/invalid payloads and full/partial updates with auth.
+ *
+ * @author abhishek.dwivedi
+ */
 import { test, expect, request, APIRequestContext } from '@playwright/test';
 import { allure } from 'allure-playwright';
 

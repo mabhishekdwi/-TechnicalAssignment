@@ -9,6 +9,8 @@ const BASE_URL = 'https://restful-booker.herokuapp.com';
  * GET /booking         → list of { bookingid: number }
  * GET /booking/:id     → full booking object
  * GET /booking?filter  → filtered list
+ *
+ * @author abhishek.dwivedi
  */
 test.describe('Booking Management — GET', { tag: ['@booking-get', '@api'] }, () => {
 

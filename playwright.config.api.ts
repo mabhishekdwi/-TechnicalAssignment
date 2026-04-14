@@ -4,6 +4,8 @@ import { defineConfig } from '@playwright/test';
  * Restful-Booker API Test Configuration
  * Target: https://restful-booker.herokuapp.com/
  * Docs: https://restful-booker.herokuapp.com/apidoc/index.html
+ *
+ * @author abhishek.dwivedi
  */
 export default defineConfig({
   testDir: './tests/api',

@@ -16,6 +16,8 @@ export type AuthFixtures = {
  *   test('my test', async ({ authenticatedPage }) => {
  *     await authenticatedPage.goto('/inventory.html');
  *   });
+ *
+ * @author abhishek.dwivedi
  */
 export const test = base.extend<AuthFixtures>({
   authenticatedPage: async ({ page }, use) => {

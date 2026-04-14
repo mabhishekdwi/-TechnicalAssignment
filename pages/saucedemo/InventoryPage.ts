@@ -4,6 +4,8 @@ import BasePage from '../BasePage.js';
 /**
  * SauceDemo Inventory / Products Page
  * URL: https://www.saucedemo.com/inventory.html
+ *
+ * @author abhishek.dwivedi
  */
 export class InventoryPage extends BasePage {
   private readonly pageTitle: Locator;

@@ -1,3 +1,8 @@
+/**
+ * SauceDemo-specific shared helper utilities.
+ *
+ * @author abhishek.dwivedi
+ */
 import { Page } from '@playwright/test';
 
 /**

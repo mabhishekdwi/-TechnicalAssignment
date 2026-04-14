@@ -3,6 +3,8 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * SauceDemo Web UI Test Configuration
  * Target: https://www.saucedemo.com/
+ *
+ * @author abhishek.dwivedi
  */
 export default defineConfig({
   testDir: './tests/saucedemo',

@@ -1,6 +1,8 @@
 /**
  * API Endpoints — Restful-Booker
  * https://restful-booker.herokuapp.com/apidoc/index.html
+ *
+ * @author abhishek.dwivedi
  */
 
 export const RESTFUL_BOOKER_BASE_URL = 'https://restful-booker.herokuapp.com';

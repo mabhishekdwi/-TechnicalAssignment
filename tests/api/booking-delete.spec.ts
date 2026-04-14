@@ -1,3 +1,9 @@
+/**
+ * Booking Management — DELETE — Restful-Booker
+ * Tests authenticated delete (201), unauthorised delete (403), and deleting a non-existent booking (405).
+ *
+ * @author abhishek.dwivedi
+ */
 import { test, expect, request, APIRequestContext } from '@playwright/test';
 import { allure } from 'allure-playwright';
 

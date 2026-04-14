@@ -1,3 +1,8 @@
+/**
+ * BasePage — shared Playwright wrappers extended by all page objects.
+ *
+ * @author abhishek.dwivedi
+ */
 import { Page, Locator } from '@playwright/test';
 
 class BasePage {

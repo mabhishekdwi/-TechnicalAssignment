@@ -1,3 +1,9 @@
+/**
+ * Product Catalog — SauceDemo
+ * Tests product listing, add to cart, sort by price, and cart count.
+ *
+ * @author abhishek.dwivedi
+ */
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
 import { LoginPage } from '../../pages/saucedemo/LoginPage.js';

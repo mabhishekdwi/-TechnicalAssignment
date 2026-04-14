@@ -1,3 +1,9 @@
+/**
+ * ApiUtil — HTTP client wrapper around Playwright's APIRequestContext.
+ * Supports GET, POST, PUT, PATCH, DELETE, HEAD, and file upload.
+ *
+ * @author abhishek.dwivedi
+ */
 import { request, APIRequestContext, APIResponse } from '@playwright/test';
 
 export interface ApiConfig {

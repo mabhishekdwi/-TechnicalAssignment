@@ -1,4 +1,8 @@
-// Type definitions for SauceDemo Web UI and Restful-Booker API
+/**
+ * Shared TypeScript type definitions for SauceDemo Web UI and Restful-Booker API tests.
+ *
+ * @author abhishek.dwivedi
+ */
 
 // ── SauceDemo ─────────────────────────────────────────────────────────────────
 

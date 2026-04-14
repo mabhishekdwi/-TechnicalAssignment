@@ -10,6 +10,8 @@ import { CheckoutPage } from '../../pages/saucedemo/CheckoutPage.js';
  *
  * This test covers the complete happy-path purchase flow in a single scenario,
  * validating every step a real user would go through.
+ *
+ * @author abhishek.dwivedi
  */
 test.describe('E2E: Complete Purchase Flow', { tag: ['@e2e', '@critical', '@smoke'] }, () => {
 

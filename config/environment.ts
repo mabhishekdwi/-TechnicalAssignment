@@ -1,3 +1,9 @@
+/**
+ * Environment configuration — loads .env and exports typed constants
+ * for SauceDemo and Restful-Booker.
+ *
+ * @author abhishek.dwivedi
+ */
 import * as dotenv from 'dotenv';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';

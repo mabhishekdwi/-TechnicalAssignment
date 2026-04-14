@@ -8,6 +8,8 @@ const BASE_URL = 'https://restful-booker.herokuapp.com';
  *
  * Validates the complete booking lifecycle in one chained scenario, ensuring
  * data integrity is maintained across all CRUD operations.
+ *
+ * @author abhishek.dwivedi
  */
 test.describe('E2E: Booking Lifecycle — Create → Update → Verify → Delete', {
   tag: ['@e2e', '@api', '@critical']

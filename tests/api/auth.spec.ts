@@ -8,6 +8,8 @@ const BASE_URL = 'https://restful-booker.herokuapp.com';
  *
  * Positive: valid credentials → returns { token: string }
  * Negative: wrong password   → returns { reason: 'Bad credentials' }
+ *
+ * @author abhishek.dwivedi
  */
 test.describe('Authentication — POST /auth', { tag: ['@auth', '@api'] }, () => {
 

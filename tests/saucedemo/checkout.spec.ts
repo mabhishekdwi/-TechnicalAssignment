@@ -1,3 +1,9 @@
+/**
+ * Shopping Cart & Checkout — SauceDemo
+ * Tests complete checkout flow, form validation (empty/missing fields), and continue shopping.
+ *
+ * @author abhishek.dwivedi
+ */
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
 import { LoginPage } from '../../pages/saucedemo/LoginPage.js';

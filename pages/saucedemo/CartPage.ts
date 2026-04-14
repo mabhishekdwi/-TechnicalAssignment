@@ -4,6 +4,8 @@ import BasePage from '../BasePage.js';
 /**
  * SauceDemo Shopping Cart Page
  * URL: https://www.saucedemo.com/cart.html
+ *
+ * @author abhishek.dwivedi
  */
 export class CartPage extends BasePage {
   private readonly pageTitle: Locator;

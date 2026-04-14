@@ -7,6 +7,8 @@ import BasePage from '../BasePage.js';
  * Step 1: /checkout-step-one.html  — shipping information form
  * Step 2: /checkout-step-two.html  — order summary
  * Complete: /checkout-complete.html — success confirmation
+ *
+ * @author abhishek.dwivedi
  */
 export class CheckoutPage extends BasePage {
   // ── Step 1 ──────────────────────────────────────────────────────────────────
