@@ -1,110 +1,49 @@
 /**
- * API Endpoints Configuration
- * Centralized location for all API endpoints
+ * API Endpoints — Restful-Booker
+ * https://restful-booker.herokuapp.com/apidoc/index.html
  */
 
-export const API_BASE_URLS = {
-  DEV: 'https://dev-api.example.com',
-  QA: 'https://qa-api.example.com',
-  STAGING: 'https://staging-api.example.com',
-  PROD: 'https://api.example.com',
-  AUTOMATION_EXERCISE: 'https://automationexercise.com'
-};
+export const RESTFUL_BOOKER_BASE_URL = 'https://restful-booker.herokuapp.com';
 
+// ── Authentication ────────────────────────────────────────────────────────────
 export const AUTH_ENDPOINTS = {
-  LOGIN: '/auth/login',
-  LOGOUT: '/auth/logout',
-  REGISTER: '/auth/register',
-  REFRESH_TOKEN: '/auth/refresh',
-  FORGOT_PASSWORD: '/auth/forgot-password',
-  RESET_PASSWORD: '/auth/reset-password',
-  VERIFY_EMAIL: '/auth/verify-email'
+  CREATE_TOKEN: '/auth'
 };
 
-export const USER_ENDPOINTS = {
-  GET_USER: '/users/:id',
-  GET_ALL_USERS: '/users',
-  CREATE_USER: '/users',
-  UPDATE_USER: '/users/:id',
-  DELETE_USER: '/users/:id',
-  GET_USER_PROFILE: '/users/profile',
-  UPDATE_PROFILE: '/users/profile',
-  CHANGE_PASSWORD: '/users/change-password'
+// ── Booking ───────────────────────────────────────────────────────────────────
+export const BOOKING_ENDPOINTS = {
+  GET_ALL:   '/booking',
+  GET_BY_ID: '/booking/:id',
+  CREATE:    '/booking',
+  UPDATE:    '/booking/:id',
+  PARTIAL:   '/booking/:id',
+  DELETE:    '/booking/:id'
 };
 
-export const PRODUCT_ENDPOINTS = {
-  GET_PRODUCT: '/products/:id',
-  GET_ALL_PRODUCTS: '/products',
-  SEARCH_PRODUCTS: '/products/search',
-  CREATE_PRODUCT: '/products',
-  UPDATE_PRODUCT: '/products/:id',
-  DELETE_PRODUCT: '/products/:id',
-  GET_CATEGORIES: '/products/categories',
-  GET_BY_CATEGORY: '/products/category/:categoryId'
-};
+// ── SauceDemo Web UI ──────────────────────────────────────────────────────────
+export const SAUCEDEMO_BASE_URL = 'https://www.saucedemo.com';
 
-export const ORDER_ENDPOINTS = {
-  CREATE_ORDER: '/orders',
-  GET_ORDER: '/orders/:id',
-  GET_ALL_ORDERS: '/orders',
-  UPDATE_ORDER: '/orders/:id',
-  CANCEL_ORDER: '/orders/:id/cancel',
-  GET_USER_ORDERS: '/orders/user/:userId',
-  GET_ORDER_STATUS: '/orders/:id/status'
-};
+export const SAUCEDEMO_USERS = {
+  STANDARD:      'standard_user',
+  LOCKED:        'locked_out_user',
+  PROBLEM:       'problem_user',
+  PERF_GLITCH:   'performance_glitch_user',
+  ERROR:         'error_user',
+  VISUAL:        'visual_user'
+} as const;
 
-export const CART_ENDPOINTS = {
-  GET_CART: '/cart',
-  ADD_TO_CART: '/cart/items',
-  UPDATE_CART_ITEM: '/cart/items/:id',
-  REMOVE_FROM_CART: '/cart/items/:id',
-  CLEAR_CART: '/cart/clear',
-  GET_CART_TOTAL: '/cart/total'
-};
-
-// Automation Exercise API Endpoints
-export const AUTOMATION_EXERCISE_ENDPOINTS = {
-  GET_ALL_PRODUCTS: '/api/productsList',
-  GET_ALL_BRANDS: '/api/brandsList',
-  SEARCH_PRODUCT: '/api/searchProduct',
-  VERIFY_LOGIN: '/api/verifyLogin',
-  CREATE_ACCOUNT: '/api/createAccount',
-  DELETE_ACCOUNT: '/api/deleteAccount',
-  UPDATE_ACCOUNT: '/api/updateAccount',
-  GET_USER_DETAIL_BY_EMAIL: '/api/getUserDetailByEmail'
-};
+export const SAUCEDEMO_PASSWORD = 'secret_sauce';
 
 /**
- * Helper function to replace path parameters
- * @param endpoint - Endpoint with parameters (e.g., '/users/:id')
- * @param params - Object with parameter values (e.g., { id: '123' })
- * @returns Endpoint with replaced parameters (e.g., '/users/123')
+ * Replace path parameter placeholders in an endpoint string.
+ * @example buildEndpoint(BOOKING_ENDPOINTS.GET_BY_ID, { id: 42 }) → '/booking/42'
  */
-export function buildEndpoint(endpoint: string, params: Record<string, string | number>): string {
-  let builtEndpoint = endpoint;
-
-  for (const [key, value] of Object.entries(params)) {
-    builtEndpoint = builtEndpoint.replace(`:${key}`, String(value));
-  }
-
-  return builtEndpoint;
+export function buildEndpoint(
+  endpoint: string,
+  params: Record<string, string | number>
+): string {
+  return Object.entries(params).reduce(
+    (acc, [key, value]) => acc.replace(`:${key}`, String(value)),
+    endpoint
+  );
 }
-
-/**
- * Get base URL based on environment
- * @param env - Environment name (DEV, QA, STAGING, PROD)
- * @returns Base URL for the environment
- */
-export function getBaseURL(env: keyof typeof API_BASE_URLS = 'DEV'): string {
-  return API_BASE_URLS[env];
-}
-
-/**
- * Example usage:
- *
- * const userEndpoint = buildEndpoint(USER_ENDPOINTS.GET_USER, { id: '123' });
- * // Returns: '/users/123'
- *
- * const baseURL = getBaseURL('QA');
- * // Returns: 'https://qa-api.example.com'
- */
