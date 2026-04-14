@@ -50,8 +50,11 @@ playwright-automation-framework/
 │       └── api-tests.yml           # CI for Restful-Booker API tests
 │
 ├── config/
-│   ├── environment.ts              # Multi-env manager (dev/qa/staging/prod)
+│   ├── environment.ts              # Environment constants for SauceDemo and Restful-Booker
 │   └── apiEndpoints.ts             # Centralised API endpoint constants
+│
+├── data/
+│   └── sample-test-data.json       # Shared test data (SauceDemo users, checkout, booking payload)
 │
 ├── fixtures/
 │   └── authFixture.ts              # Reusable authenticated-page fixtures
