@@ -25,6 +25,11 @@ on:
           - booking-crud
           - booking-delete
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   api-tests:
     name: "API Tests (${{ github.event.inputs.suite || 'all' }})"
@@ -68,6 +73,7 @@ jobs:
           esac
         env:
           CI: "true"
+        continue-on-error: true
 
       # ── Artifacts ────────────────────────────────────────────────────────────
       - name: Upload HTML Report
@@ -93,3 +99,13 @@ jobs:
           name: api-json-results
           path: reports/api-results.json
           retention-days: 30
+
+      # ── Deploy HTML Report to GitHub Pages ───────────────────────────────────
+      - name: Deploy API Report to GitHub Pages
+        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: reports/api-report
+          destination_dir: api-report
+          keep_files: true

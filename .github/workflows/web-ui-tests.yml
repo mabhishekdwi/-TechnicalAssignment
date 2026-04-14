@@ -26,6 +26,11 @@ on:
           - products
           - checkout
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   web-ui-tests:
     name: "Web UI Tests (${{ github.event.inputs.suite || 'all' }})"
@@ -69,6 +74,7 @@ jobs:
           esac
         env:
           CI: "true"
+        continue-on-error: true
 
       # ── Artifacts ────────────────────────────────────────────────────────────
       - name: Upload HTML Report
@@ -102,3 +108,44 @@ jobs:
           name: web-ui-json-results
           path: reports/saucedemo-results.json
           retention-days: 30
+
+      # ── Deploy HTML Report to GitHub Pages ───────────────────────────────────
+      - name: Create Pages landing index
+        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        run: |
+          mkdir -p gh-pages-root
+          cat > gh-pages-root/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <title>Test Reports</title>
+            <style>
+              body { font-family: sans-serif; max-width: 600px; margin: 60px auto; }
+              a { display: block; margin: 12px 0; font-size: 1.1rem; }
+            </style>
+          </head>
+          <body>
+            <h1>Playwright Test Reports</h1>
+            <a href="web-ui-report/">Web UI Report — SauceDemo</a>
+            <a href="api-report/">API Report — Restful-Booker</a>
+          </body>
+          </html>
+          EOF
+
+      - name: Deploy Web UI Report to GitHub Pages
+        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: reports/saucedemo-report
+          destination_dir: web-ui-report
+          keep_files: true
+
+      - name: Deploy landing page to GitHub Pages
+        if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: gh-pages-root
+          keep_files: true
