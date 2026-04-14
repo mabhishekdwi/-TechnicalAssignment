@@ -21,6 +21,8 @@ test.describe('Product Catalog', { tag: ['@products', '@regression'] }, () => {
     await loginPage.navigate();
     await loginPage.login(VALID_USER.username, VALID_USER.password);
     await expect(page).toHaveURL(/inventory/);
+    await page.waitForLoadState('domcontentloaded');
+    await inventoryPage.page.locator('.inventory_list').waitFor({ state: 'visible' });
   });
 
   // ── TC-P-001 ──────────────────────────────────────────────────────────────────

@@ -20,7 +20,7 @@ export class InventoryPage extends BasePage {
     this.inventoryItems = page.locator('.inventory_item');
     this.cartBadge      = page.locator('.shopping_cart_badge');
     this.cartLink       = page.locator('.shopping_cart_link');
-    this.sortDropdown   = page.locator('[data-test="product_sort_container"]');
+    this.sortDropdown   = page.locator('[data-test="product-sort-container"]');
     this.burgerMenu     = page.locator('#react-burger-menu-btn');
     this.logoutLink     = page.locator('#logout_sidebar_link');
   }
@@ -83,6 +83,8 @@ export class InventoryPage extends BasePage {
   }
 
   async sortProducts(option: 'az' | 'za' | 'lohi' | 'hilo'): Promise<void> {
+    await this.sortDropdown.waitFor({ state: 'visible' });
+    await this.sortDropdown.scrollIntoViewIfNeeded();
     await this.sortDropdown.selectOption(option);
   }
 
